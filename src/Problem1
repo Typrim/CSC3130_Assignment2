@@ -1,0 +1,46 @@
+Steps:
+    1. Create an empty list to store the merged list.
+    Current lists: [1, 2, 3, 6], [-3, 0, 6, 7]
+    Merged list: []
+
+    2. Compare the lowest indexes' elements, and insert the lower element at the end of the merged list. If the
+    elements are equal, either value can be considered "the lower value" to insert.
+    * The indexes being observed will be surrounded by parentheses.
+    Current lists: [(1), 2, 3, 6], [(-3), 0, 6, 7]
+    Comparison: -3 < 1
+    Merged list: [-3]
+
+    3. Increase the observed index in the list of the lower value by 1.
+    Current lists: [(1), 2, 3, 6], [-3, (0), 6, 7]
+
+    4. Repeat steps 2 and 3 until one list has reached the end of the list.
+    * Reaching the end of the list will be indicated with the parentheses placed after the respective brackets.
+    Iterations:
+        a.
+        Current lists: [(1), 2, 3, 6], [-3, (0), 6, 7]
+        Comparison: 0 < 1
+        Merged list: [-3, 0]
+        b.
+        Current lists: [(1), 2, 3, 6], [-3, 0, (6), 7]
+        Comparison: 1 < 6
+        Merged list: [-3, 0, 1]
+        c.
+        Current lists: [1, (2), 3, 6], [-3, 0, (6), 7]
+        Comparison: 2 < 6
+        Merged list: [-3, 0, 1, 2]
+        d.
+        Current lists: [1, 2, (3), 6], [-3, 0, (6), 7]
+        Comparison: 3 < 6
+        Merged list: [-3, 0, 1, 2, 3]
+        e.
+        Current lists: [1, 2, 3, (6)], [-3, 0, (6), 7]
+        Comparison: 6 = 6 (We will choose the first list's element to insert for this example)
+        Merged list: [-3, 0, 1, 2, 3, 6]
+        f.
+        Current lists: [1, 2, 3, 6] (), [-3, 0, (6), 7]
+
+    5. When one list has reached the end of the list, insert the remaining values in the other list, keeping
+    their order.
+    Current lists: [1, 2, 3, 6] (), [-3, 0, (6), 7]
+    Merged list: [-3, 0, 1, 2, 3, 6, 6, 7]
+    Current lists: [1, 2, 3, 6] (), [-3, 0, 6, 7] ()
