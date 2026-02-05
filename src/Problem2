@@ -1,0 +1,85 @@
+Steps:
+    1. Track the index of the second value in a list with two trackers (if the list contains less than two
+    values, it is already sorted).
+    * Parentheses around a value will represent the first tracker, and asterisks around a value will represent
+    the second tracker.
+    List: [-21, *(5)*, 7, -10, 61, 8, 3, 10]
+
+    2. Compare the value with the second tracker with the value in the index that is 1 less and swap them if
+    the second tracker's value is the lesser value.
+    List: [-21, *(5)*, 7, -10, 61, 8, 3, 10]
+    Comparison: 5 > -21
+    No swap.
+
+    3. If the second tracker's value was the lesser value, decrease the second tracker's index by 1.
+    List: [*-21*, (5), 7, -10, 61, 8, 3, 10]
+
+    4. Repeat steps 2 and 3 until the second tracker is at the 0th index or until its value is greater than a
+    compared value.
+    Second tracker's value was greater than the compared value, so no further iterations are done.
+
+    5. Increment the first tracker by 1, and set the second tracker to the first tracker's index.
+    List: [*-21*, 5, (7), -10, 61, 8, 3, 10]
+    List: [-21, 5, *(7)*, -10, 61, 8, 3, 10]
+
+    6. Repeat steps 2 through 5 until the first tracker's index is equal to the list's size (it has reached the
+    end of the list).
+    * Reaching the end of the list will be represented by the first tracker being placed after the brackets.
+    Iterations:
+        a.
+        List: [-21, 5, *(7)*, -10, 61, 8, 3, 10]
+        Comparison: 7 > 5
+        No swap.
+        List: [-21, 5, 7, *(-10)*, 61, 8, 3, 10]
+        b.
+        Comparison: -10 < 7
+        List: [-21, 5, -10, *(7)*, 61, 8, 3, 10]
+        List: [-21, 5, *-10*, (7), 61, 8, 3, 10]
+        c.
+        Comparison: -10 < 5
+        List: [-21, -10, *5*, (7), 61, 8, 3, 10]
+        List: [-21, *-10*, 5, (7), 61, 8, 3, 10]
+        d.
+        Comparison: -10 > -21
+        No swap.
+        List: [-21, -10, 5, 7, *(61)*, 8, 3, 10]
+        e.
+        Comparison: 61 > 7
+        No swap.
+        List: [-21, -10, 5, 7, 61, *(8)*, 3, 10]
+        f.
+        Comparison: 8 < 61
+        List: [-21, -10, 5, 7, 8, *(61)*, 3, 10]
+        List: [-21, -10, 5, 7, *8*, (61), 3, 10]
+        g.
+        Comparison: 8 > 7
+        No swap.
+        List: [-21, -10, 5, 7, 8, 61, *(3)*, 10]
+        h.
+        Comparison: 3 < 61
+        List: [-21, -10, 5, 7, 8, 3, *(61)*, 10]
+        List: [-21, -10, 5, 7, 8, *3*, (61), 10]
+        i.
+        Comparison: 3 < 8
+        List: [-21, -10, 5, 7, 3, *8*, (61), 10]
+        List: [-21, -10, 5, 7, *3*, 8, (61), 10]
+        j.
+        Comparison: 3 < 7
+        List: [-21, -10, 5, 3, *7*, 8, (61), 10]
+        List: [-21, -10, 5, *3*, 7, 8, (61), 10]
+        k.
+        Comparison: 3 < 5
+        List: [-21, -10, 3, *5*, 7, 8, (61), 10]
+        List: [-21, -10, *3*, 5, 7, 8, (61), 10]
+        l.
+        Comparison: 3 > -10
+        No swap.
+        List: [-21, -10, 3, 5, 7, 8, 61, *(10)*]
+        m.
+        Comparison: 10 < 61
+        List: [-21, -10, 3, 5, 7, 8, 10, *(61)*]
+        List: [-21, -10, 3, 5, 7, 8, *10*, (61)]
+        n.
+        Comparison: 10 > 8
+        No swap.
+        List: [-21, -10, 3, 5, 7, 8, 10, 61] *()*
