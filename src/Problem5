@@ -1,0 +1,15 @@
+I rank these sorting algorithms from fastest to slowest in the following order:
+    1. Merge sort
+    2. Shell sort
+    3. Selection sort
+    4. Quicksort
+    5. Insertion sort
+    6. Bubble sort
+Explaining from slowest to fastest, I will start with bubble sort.
+
+Bubble sort is placed last as it is Theta(n^2), which is the least optimal in this entire list.
+
+Insertion sort is placed 5th while not being listed as a tie with bubble sort because it is Omega(n). Despite
+that insertion sort is O(n) like bubble sort if insertion sort is not being used on a nearly sorted array, this
+slight advantage in its best case scenario puts it over bubble sort.
+
