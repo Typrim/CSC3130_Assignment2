@@ -1,0 +1,40 @@
+Steps:
+    1. Choose some gap values. This example will be using powers of 2 subtracted by 1 in descending order.
+    Gaps: {7, 3, 1}
+
+    2. Starting with the first gap value, partition the list so that it becomes interweaving lists. To do this,
+    start at the first index and increment it by the gap value until it would be out of bounds.
+    * The interweaved lists will be represented by arbitrary characters that surround the values, where two
+    values surrounded by matching characters are part of one interweaved list.
+    Gap: 7
+    List: [(5), 10, 60, 0, -1, 34, 6, (10)]
+
+    3. Utilize a modified version of insertion sort, which compares values in indices that are apart by the gap
+    value. See Problem2 for more information about insertion sort.
+    The interweaved list is sorted to be [5, 10] (this is not a separate list, and there was no change).
+
+    4. Repeat steps 2 and 3 for each index less than the gap value.
+    List: [(5), *10*, &60&, %0%, #-1#, @34@, ^6^, (10)]
+
+    5. Repeat step 4 for each gap value selected in step 1.
+    a.
+    Gap: 3
+    List: [(5), 10, 60, (0), -1, 34, (6), 10]
+    Interweaved list: [5, 0, 6]
+    After (interweaved) insertion sort: [0, 5, 6]
+    List: [(0), 10, 60, (5), -1, 34, (6), 10]
+    b.
+    List: [0, (10), 60, 5, (-1), 34, 6, (10)]
+    Interweaved list: [10, -1, 10]
+    After insertion sort: [-1, 10, 10]
+    List: [0, (-1), 60, 5, (10), 34, 6, (10)]
+    c.
+    List: [0, -1, (60), 5, 10, (34), 6, 10]
+    Interweaved list: [60, 34]
+    After insertion sort: [34, 60]
+    List: [0, -1, (34), 5, 10, (60), 6, 10]
+    d.
+    Gap: 1
+    * This is the equivalent of a normal insertion sort, so this iteration will not use special characters to
+    indicate interweaved lists as the entire list is the interweaved list in the case of a gap of value 1.
+    After insertion sort: [0, -1, 5, 6, 10, 10, 34, 60]
