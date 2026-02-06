@@ -1,0 +1,61 @@
+Steps:
+    1. Choose a pivot. The method of choosing a pivot for this example will be selecting the median between the
+    first, middle, and last value of the list.
+    List: [-5, 4, 2, 619, 11, 5, 620, -3]
+    Possible pivot values: [-5, 619, -3]
+    Pivot: -3
+
+    2. Create two index variables (they will be referred to as lowIndex and highIndex) to point at the lowest
+    index and highest index respectively.
+    * lowIndex will be represented by parentheses, and highIndex will be represented by asterisks.
+    List: [(-5), 4, 2, 619, 11, 5, 620, *-3*]
+
+    3. Compare the lowIndex value to the pivot.
+    Comparison: -5 < -3
+
+    4. If the lowIndex value is lower than the pivot, increment lowIndex. If the value is equal to the pivot,
+    it can be decided whether it is incremented.
+    * In this example, equal values will be considered the same as being lower values.
+    List: [-5, (4), 2, 619, 11, 5, 620, *-3*]
+
+    5. Repeat steps 3 and 4 until the lowIndex value is greater than (or equal to) the pivot or until lowIndex
+    is greater than highIndex.
+    Comparison: 4 > -3
+
+    6. Compare the highIndex value to the pivot.
+    Comparison: -3 = -3
+
+    7. If the highIndex value is higher than the pivot, decrement highIndex. If the value is equal to the pivot,
+    it can be decided whether it is incremented.
+    No decrement.
+
+    8. Repeat steps 6 and 7 until the highIndex value is less than (or equal to) the pivot or until highIndex is
+    less than lowIndex.
+    No repetition since the highIndex value is considered less than the pivot.
+
+    9. If highIndex is not decremented (its value is considered to be lower than the pivot) and is greater than
+    lowIndex, swap lowIndex and highIndexes' values.
+    List: [-5, (-3), 2, 619, 11, 5, 620, *4*]
+
+    8. Repeat steps 5 and 8 until the lowIndex is greater than the highIndex.
+    Completing step 5...
+    List: [-5, -3, (2), 619, 11, 5, 620, *4*]
+    Completing step 8...
+    List: [-5, *-3*, (2), 619, 11, 5, 620, 4]
+
+    9. Partition the list into two where one list contains the values from the 0th index to the highIndex and
+    the other list contains the rest.
+    * The vertical bar will indicate where the list is partitioned.
+    List: [-5, *-3*, | (2), 619, 11, 5, 620, 4]
+
+    10. Repeat steps 1 through 10 for both partitions unless the partition has one or zero elements (it is
+    considered sorted).
+    * For ease of reading, the partitions will be separated into different lists contained in a shared list, but
+    it is not actually being done this way. Additionally, it will not be done in the order at which the code may
+    do it for ease of writing.
+    Partitions (of the list): [-5, -3], [2, 619, 11, 5, 620, 4]
+    Iterations after each partitioning:
+        a. [pivot: -3: [-3], [-5]], [pivot: 4: [2, 4], [11, 5, 620, 619]]
+        b. [[-3], [-5]], [[pivot: 2: [2], [4]], [pivot: 11: [11, 5], [620, 619]]]
+        c. [[-3], [-5]], [[[2], [4]], [[pivot: 5: [5], [11]], [pivot: 619: [619], [620]]]
+    List: [-3, -5, 2, 4, 5, 11, 619, 620]
